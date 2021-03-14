@@ -1,7 +1,9 @@
 # ember-meal-plans
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+I built this app for my EmberConf 2021 talk, to demonstrate how to use Ember M3
+alongside Firebase! You can use this app by cloning it, and then adding your
+Firebase config to `config.firebase`. You can learn more about the Firebase
+config and where to get it [here](https://firebase.google.com/docs/web/setup#config-object).
 
 ## Prerequisites
 

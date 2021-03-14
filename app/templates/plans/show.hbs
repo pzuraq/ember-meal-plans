@@ -1,0 +1,33 @@
+{{page-title "Show"}}
+
+<h1 class="sr-only">
+  {{@model.plan.name}}
+</h1>
+
+<label class="header-input">
+  <span class="sr-only">Meal Plan Name</span>
+
+  <XInput
+    value={{@model.plan.name}}
+    @onInput={{queue (set @model.plan "name") this.save}}
+  />
+</label>
+
+
+<ul class="meal-plan">
+  {{#each @model.plan.days as |day index|}}
+    <MealPlanDay
+      @day={{day}}
+      @dayNumber={{inc index 1}}
+      @save={{this.save}}
+      @recipes={{@model.recipes}}
+      @addMeal={{this.addMeal}}
+    />
+  {{/each}}
+
+  <li>
+    <button type="button" {{on "click" this.addDay}}>
+      + Add a Day
+    </button>
+  </li>
+</ul>

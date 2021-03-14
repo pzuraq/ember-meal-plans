@@ -1,0 +1,17 @@
+{{page-title "Index"}}
+
+<ul class="item-list">
+  {{#each @model as |recipe|}}
+    <li>
+      <LinkTo @route="recipes.show" @model={{recipe.id}}>
+        {{recipe.name}}
+      </LinkTo>
+    </li>
+  {{/each}}
+
+  <li>
+    <button type="button" {{on "click" this.createRecipe}}>
+      + New Recipe
+    </button>
+  </li>
+</ul>

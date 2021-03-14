@@ -1,0 +1,54 @@
+<li>
+  <h2>Day {{@dayNumber}}</h2>
+
+  <ul class="meal-grid">
+    <li>
+      <div>meal</div>
+      <div>recipe</div>
+      <div>serv</div>
+      <div>cals</div>
+    </li>
+
+    {{#each @day.meals as |meal|}}
+      <li>
+        <XInput
+          value={{meal.name}}
+          @onInput={{queue (set meal "name") @save}}
+        />
+
+        <XSelect
+          @value={{meal.recipe}}
+          @onChange={{queue (set meal "recipe") @save}}
+
+          as |xs|
+        >
+          <xs.option>Select a recipe...</xs.option>
+
+          {{#each @recipes as |recipe|}}
+            <xs.option @value={{recipe}}>{{recipe.name}}</xs.option>
+          {{/each}}
+        </XSelect>
+
+        <XInput
+          value={{meal.servings}}
+          type="number"
+          @onInput={{queue (set meal "servings") @save}}
+        />
+
+        <div class="calories">
+          {{meal-calories meal}}
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+
+  <div class="meal-footer">
+    <button {{on "click" (fn @addMeal @day)}}>
+      + Add Meal
+    </button>
+
+    <div class="calories">
+      Total Calories: {{day-calories @day}}
+    </div>
+  </div>
+</li>

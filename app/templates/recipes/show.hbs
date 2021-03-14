@@ -1,0 +1,41 @@
+{{page-title "Show"}}
+
+<h1 class="sr-only">
+  {{@model.name}}
+</h1>
+
+<form class="recipe-form">
+  <label class="header-input">
+    <span class="sr-only">Recipe Name</span>
+    <XInput
+      value={{@model.name}}
+      @onInput={{queue (set @model "name") this.save}}
+    />
+  </label>
+
+  <div class="layout">
+    <label class="lg:col-3">
+      Number of Servings
+      <XInput
+        value={{@model.numServings}}
+        type="number"
+        @onInput={{queue (set @model "numServings") this.save}}
+      />
+    </label>
+    <label class="lg:col-3">
+      Total Calories
+      <XInput
+        value={{@model.totalCalories}}
+        type="number"
+        @onInput={{queue (set @model "totalCalories") this.save}}
+      />
+    </label>
+    <label>
+      Instructions
+      <XTextarea
+        value={{@model.instructions}}
+        @onInput={{queue (set @model "instructions") this.save}}
+      />
+    </label>
+  </div>
+</form>

@@ -1,0 +1,17 @@
+{{page-title "Index"}}
+
+<ul class="item-list">
+  {{#each @model as |plan|}}
+    <li>
+      <LinkTo @route="plans.show" @model={{plan.id}}>
+        {{plan.name}}
+      </LinkTo>
+    </li>
+  {{/each}}
+
+  <li>
+    <button type="button" {{on "click" this.createPlan}}>
+      + New Plan
+    </button>
+  </li>
+</ul>
